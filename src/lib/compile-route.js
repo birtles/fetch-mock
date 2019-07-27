@@ -1,4 +1,4 @@
-const debug = require('debug')('fetch-mock')
+const debug = require('debug')('fetch-mock');
 const generateMatcher = require('./generate-matcher');
 
 const sanitizeRoute = (route, useDebugger = true) => {
@@ -10,9 +10,9 @@ const sanitizeRoute = (route, useDebugger = true) => {
 		route.method = route.method.toLowerCase();
 	}
 
-	useDebugger && debug('Setting route.identifier...')
-	useDebugger && debug(`  route.name is ${route.name}`)
-	useDebugger && debug(`  route.matcher is ${route.matcher}`)
+	useDebugger && debug('Setting route.identifier...');
+	useDebugger && debug(`  route.name is ${route.name}`);
+	useDebugger && debug(`  route.matcher is ${route.matcher}`);
 	route.identifier = route.name || route.matcher;
 	useDebugger && debug(`  > route.identifier set to ${route.identifier}`);
 	return route;
@@ -33,11 +33,11 @@ const validateRoute = route => {
 const limitMatcher = route => {
 	debug('Limiting number of requests to handle by route');
 	if (!route.repeat) {
-		debug('No `repeat` value set on route. Will match any number of requests')
+		debug('No `repeat` value set on route. Will match any number of requests');
 		return;
 	}
 
-	debug(`Route set to repeat ${route.repeat} times`)
+	debug(`Route set to repeat ${route.repeat} times`);
 	const matcher = route.matcher;
 	let timesLeft = route.repeat;
 	route.matcher = (url, options) => {
