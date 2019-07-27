@@ -1,13 +1,20 @@
+const debug = require('debug')('fetch-mock')
 const generateMatcher = require('./generate-matcher');
 
 const sanitizeRoute = route => {
+	debug('Sanitizing route properties');
 	route = Object.assign({}, route);
 
 	if (route.method) {
+		debug(`Converting method ${route.method} to lower case`);
 		route.method = route.method.toLowerCase();
 	}
-	route.identifier = route.name || route.matcher;
 
+	debug('Setting route.identifier...')
+	debug(`- route.name is ${route.name}`)
+	debug(`- route.matcher is ${route.matcher}`)
+	route.identifier = route.name || route.matcher;
+	debug(`=> route.identifier set to ${route.identifier}`);
 	return route;
 };
 
@@ -24,10 +31,13 @@ const validateRoute = route => {
 };
 
 const limitMatcher = route => {
+	debug('Limiting number of requests to handle by route');
 	if (!route.repeat) {
+		debug('No `repeat` value set on route. Will match any number of requests')
 		return;
 	}
 
+	debug(`Route set to repeat ${route.repeat} times`)
 	const matcher = route.matcher;
 	let timesLeft = route.repeat;
 	route.matcher = (url, options) => {
@@ -41,6 +51,7 @@ const limitMatcher = route => {
 };
 
 module.exports = route => {
+	debug('Compiling route');
 	validateRoute(route);
 	route = sanitizeRoute(route);
 	route.matcher = generateMatcher(route);

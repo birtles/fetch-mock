@@ -49,6 +49,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "core-js": "^2.6.9",
+    "debug": "^4.1.1",
     "glob-to-regexp": "^0.4.0",
     "path-to-regexp": "^2.2.1",
     "whatwg-url": "^6.5.0"
