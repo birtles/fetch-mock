@@ -1,20 +1,20 @@
 const debug = require('debug')('fetch-mock')
 const generateMatcher = require('./generate-matcher');
 
-const sanitizeRoute = route => {
-	debug('Sanitizing route properties');
+const sanitizeRoute = (route, useDebugger = true) => {
+	useDebugger && debug('Sanitizing route properties');
 	route = Object.assign({}, route);
 
 	if (route.method) {
-		debug(`Converting method ${route.method} to lower case`);
+		useDebugger && debug(`Converting method ${route.method} to lower case`);
 		route.method = route.method.toLowerCase();
 	}
 
-	debug('Setting route.identifier...')
-	debug(`- route.name is ${route.name}`)
-	debug(`- route.matcher is ${route.matcher}`)
+	useDebugger && debug('Setting route.identifier...')
+	useDebugger && debug(`- route.name is ${route.name}`)
+	useDebugger && debug(`- route.matcher is ${route.matcher}`)
 	route.identifier = route.name || route.matcher;
-	debug(`=> route.identifier set to ${route.identifier}`);
+	useDebugger && debug(`=> route.identifier set to ${route.identifier}`);
 	return route;
 };
 
