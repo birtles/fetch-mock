@@ -11,10 +11,10 @@ const sanitizeRoute = (route, useDebugger = true) => {
 	}
 
 	useDebugger && debug('Setting route.identifier...')
-	useDebugger && debug(`- route.name is ${route.name}`)
-	useDebugger && debug(`- route.matcher is ${route.matcher}`)
+	useDebugger && debug(`  route.name is ${route.name}`)
+	useDebugger && debug(`  route.matcher is ${route.matcher}`)
 	route.identifier = route.name || route.matcher;
-	useDebugger && debug(`=> route.identifier set to ${route.identifier}`);
+	useDebugger && debug(`  > route.identifier set to ${route.identifier}`);
 	return route;
 };
 
