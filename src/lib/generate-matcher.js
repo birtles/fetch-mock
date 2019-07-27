@@ -24,6 +24,9 @@ const stringMatchers = {
 };
 
 const getHeaderMatcher = ({ headers: expectedHeaders }) => {
+	if (!expectedHeaders) {
+		return
+	}
 	const expectation = headerUtils.toLowerCase(expectedHeaders);
 	return (url, { headers = {} }) => {
 		const lowerCaseHeaders = headerUtils.toLowerCase(
@@ -37,11 +40,17 @@ const getHeaderMatcher = ({ headers: expectedHeaders }) => {
 };
 
 const getMethodMatcher = ({ method: expectedMethod }) => {
+	if (!expectedMethod) {
+		return
+	}
 	return (url, { method }) =>
 		expectedMethod === (method ? method.toLowerCase() : 'get');
 };
 
 const getQueryStringMatcher = ({ query: expectedQuery }) => {
+	if (!expectedQuery) {
+		return
+	}
 	const keys = Object.keys(expectedQuery);
 	return url => {
 		const query = querystring.parse(getQuery(url));
@@ -50,6 +59,9 @@ const getQueryStringMatcher = ({ query: expectedQuery }) => {
 };
 
 const getParamsMatcher = ({ params: expectedParams, matcher }) => {
+	if (!expectedParams) {
+		return
+	}
 	if (!/express:/.test(matcher)) {
 		throw new Error(
 			'fetch-mock: matching on params is only possible when using an express: matcher'
@@ -112,13 +124,13 @@ const getUrlMatcher = route => {
 	};
 };
 
-module.exports = route => {
-	debug('Generating matcher for route')
+module.exports = (route, useDebugger = true) => {
+	useDebugger && debug('Compiling matcher for route')
 	const matchers = [
-		route.query && getQueryStringMatcher(route),
-		route.method && getMethodMatcher(route),
-		route.headers && getHeaderMatcher(route),
-		route.params && getParamsMatcher(route),
+		getQueryStringMatcher(route),
+		getMethodMatcher(route),
+		getHeaderMatcher(route),
+		getParamsMatcher(route),
 		getFunctionMatcher(route),
 		getUrlMatcher(route)
 	].filter(matcher => !!matcher);
