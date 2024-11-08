@@ -1,5 +1,37 @@
 # Changelog
 
+## [13.0.0](https://github.com/birtles/fetch-mock/compare/fetch-mock-v12.0.2...fetch-mock-v13.0.0) (2024-11-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Replaced legacy fetch-mock code with fetch-mock/core code
+* force fetch-mock major release
+
+### Features
+
+* remove debug mode from fetch-mock ([89890b6](https://github.com/birtles/fetch-mock/commit/89890b6ec39077b769617f02bdf5de7b971fc52c))
+* Replaced legacy fetch-mock code with fetch-mock/core code ([999ce92](https://github.com/birtles/fetch-mock/commit/999ce9257de6683830c8e70dcda3862c3d13699e))
+
+
+### Bug Fixes
+
+* add license file to each package ([9b36f89](https://github.com/birtles/fetch-mock/commit/9b36f892ed19cd381b1f8ebbd94a28773637b9ec))
+* add missing metadata to package.json files ([4ab78b9](https://github.com/birtles/fetch-mock/commit/4ab78b9429a376230da2ce57bd320031c53f06ef))
+* allow sending responses with status 0 ([92c06e9](https://github.com/birtles/fetch-mock/commit/92c06e933fc8bd2e6b1027d1640d657bcf9a49a9))
+* change export order so default is last ([bc9c41d](https://github.com/birtles/fetch-mock/commit/bc9c41d04609c40e609e672254df5ff1ddf0cad9))
+* clearHistory() can deal with unmatched calls ([012e9ca](https://github.com/birtles/fetch-mock/commit/012e9ca7d03e39e6832f9f40087ec53d6ccc2728))
+* fixes importimng into .mts files ([98ad40e](https://github.com/birtles/fetch-mock/commit/98ad40ee5351f1f2f16edf1bbcc626ce94d0d629))
+* force fetch-mock major release ([1b31416](https://github.com/birtles/fetch-mock/commit/1b314167607b15887feba2f6124a9af9cca81c47))
+* lastOptions returns RequestInit not MockOptions ([591926a](https://github.com/birtles/fetch-mock/commit/591926a7c524650ccb82b16611fc8882c4a8a2b6))
+* roll back to glob-to-regexp ([b114124](https://github.com/birtles/fetch-mock/commit/b11412452ed376ab2e20e03a51f0dc1de1dcdb90))
+
+
+### Documentation Changes
+
+* another occurrence of the cheatsheet ref ([875e4f6](https://github.com/birtles/fetch-mock/commit/875e4f6bd7b50229b6f83e14075c1a3fcd6210a4))
+* fix link to cheatsheet ([33e75b1](https://github.com/birtles/fetch-mock/commit/33e75b1cd2391c9d4c1c9770c3be4fb771f7f726))
+
 ## [12.0.2](https://github.com/wheresrhys/fetch-mock/compare/fetch-mock-v12.0.1...fetch-mock-v12.0.2) (2024-10-28)
 
 
